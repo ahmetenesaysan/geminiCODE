@@ -2,3 +2,7 @@ node_modules/
 .env
 __pycache__/
 *.log
+*.key
+config.json
+.conf
+*.cache
