@@ -15,6 +15,18 @@
 - **Multiple AI Models:** Choose between different Gemini models tailored for your needs, including the latest Gemini Flash and Gemini Pro versions.
 - **Sleek Interface:** Colorized, readable CLI design using the official Google Gemini theme colors.
 
+## Screenshots
+
+<div align="center">
+  <img src="screenshots/welcome.png" alt="Gemini Code Terminal Welcome Interface" width="800">
+  <br>
+  <em>The sleek, modern welcome console with "Creator: Ahmetenesssssss" attribution.</em>
+  <br><br>
+  <img src="screenshots/action.png" alt="Gemini Code Status Bar" width="800">
+  <br>
+  <em>Status bar showing model version, workspace directories, and Auto-exec OFF.</em>
+</div>
+
 ## Getting Started
 
 1. Set up an API Key from Google AI Studio: [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
