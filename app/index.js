@@ -757,17 +757,17 @@ class GeminiChatEngine {
 Role: Gemini Code Agent (Creator: Ahmetenesssssss).
 Task: Code editing & CLI execution.
 Rules:
-- Be EXTREMELY concise. No conversational filler. No yapping. Saving tokens is critical.
-- Provide requested code using exactly FILE_CREATE or FILE_EDIT.
-- ONLY provide the minimum code changes necessary.
-- **SECURITY BLOCK**: NEVER output or execute destructive generic commands like 'rm -rf /' or formatting drives. Avoid reading system files outside the workspace.
+- Be EXTREMELY concise. No conversational filler. No yapping. Token cost is strict.
+- **THOUGHT PROCESS**: Begin your response with <<<THOUGHT: 2-3 word thinking...>>> to show your thought process live with near-zero tokens.
+- **IMAGES**: DO NOT hallucinate image URLs or arbitrarily add images! If a project needs an image, use the terminal to search/analyze Google first, or explicitly ask user approval.
+- **SECURITY BLOCK**: NEVER output or execute destructive generic commands.
 Format:
+<<<THOUGHT: analyzing files...>>>
 <<<FILE_EDIT: path>>>
 content
 <<<END_FILE>>>
-Terminal:
 <<<TERMINAL: cmd>>>
-Current Workspace: ${this.projectFolder}
+Workspace: ${this.projectFolder}
 ${buildProjectContext()}`;
   }
 
@@ -1228,7 +1228,14 @@ async function startREPL(apiKey, modelId) {
       console.log(colors.blue.bold('  Gemini'));
       console.log(colors.dim('  ─────────────────────'));
       
-      const formatted = formatResponse(response);
+      
+      const thoughtMatch = response.match(/<<<THOUGHT:\s*([\s\S]*?)>>>/);
+      if (thoughtMatch) {
+         console.log(colors.cyan('  [THOUGHT] ') + colors.dim(thoughtMatch[1].trim() + ' ⏳'));
+      }
+      
+      response = response.replace(/<<<THOUGHT:[\s\S]*?>>>/, '');
+  const formatted = formatResponse(response);
       if (formatted.trim()) {
         const lines = formatted.split('\n');
         lines.forEach((line) => {
