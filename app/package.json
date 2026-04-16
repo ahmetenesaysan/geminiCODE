@@ -1,0 +1,50 @@
+{
+  "name": "gemini-code",
+  "version": "0.1.0",
+  "description": "Gemini Code - Terminal AI assistant powered by Google DeepMind Gemini API",
+  "main": "index.js",
+  "bin": {
+    "gemini-code": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "build": "pkg index.js --targets node18-win-x64 --output gemini-code.exe --compress GZip",
+    "test": "node index.js"
+  },
+  "keywords": [
+    "gemini",
+    "ai",
+    "terminal",
+    "coding-assistant",
+    "google-deepmind"
+  ],
+  "author": "Ahmetenesssssss",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "pkg": {
+    "assets": [
+      "node_modules/figlet/fonts/**/*"
+    ],
+    "targets": [
+      "node18-win-x64"
+    ],
+    "outputPath": "dist"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "ansi-escapes": "^7.3.0",
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.11.0",
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "cli-cursor": "^5.0.0",
+    "conf": "^10.2.0",
+    "figlet": "^1.8.0",
+    "gradient-string": "^1.2.0",
+    "inquirer": "^8.2.6",
+    "ora": "^5.4.1",
+    "png-to-ico": "^3.0.1",
+    "rcedit": "^5.0.2",
+    "resedit": "^3.0.2"
+  }
+}
