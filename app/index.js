@@ -1218,7 +1218,7 @@ async function startREPL(apiKey, modelId) {
     }).start();
 
     try {
-      const response = await engine.sendMessage(trimmed);
+      let response = await engine.sendMessage(trimmed);
       spinner.stop();
 
       // Parse agentic actions from response
